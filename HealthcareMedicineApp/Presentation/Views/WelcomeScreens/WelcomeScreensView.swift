@@ -37,6 +37,8 @@ struct WelcomeScreensView: View {
                         )
                     }
                 }
+                .transition(.opacity.combined(with: .move(edge: .trailing)))
+                .animation(.easeInOut(duration: 0.4), value: currentPage)
                 .frame(maxHeight: .infinity)
                 
                 // Pagination dots
@@ -55,6 +57,7 @@ struct WelcomeScreensView: View {
         }
     }
 }
+
 
 #Preview {
     WelcomeScreensView()
