@@ -1,17 +1,12 @@
 import SwiftUI
 
-
 struct LoginView: View {
     @State var viewModel: LoginViewModel
     var onBackTapped: (() -> Void)?
-    
-    private let tealColor = Color(red: 0.13, green: 0.85, blue: 0.77)
-    private let darkColor = Color(red: 0.02, green: 0.12, blue: 0.22)
-    private let lightTeal = Color(red: 0.72, green: 0.91, blue: 0.88)
 
     var body: some View {
         ZStack {
-            Color(red: 0.95, green: 0.96, blue: 0.97)
+            LightAppTheme.Colors.background
                 .ignoresSafeArea()
             
             VStack {
@@ -28,9 +23,9 @@ struct LoginView: View {
                         socialButtons
                         footer
                     }
-                    .padding(.horizontal, 24)
-                    .padding(.top, 16)
-                    .padding(.bottom, 24)
+                    .padding(.horizontal, LightAppTheme.Spacing.spacingXL)
+                    .padding(.top, LightAppTheme.Spacing.spacingMedium)
+                    .padding(.bottom, LightAppTheme.Spacing.spacingXL)
                 }
             }
         }
@@ -46,13 +41,13 @@ struct LoginView: View {
     }
 
     private var securityCard: some View {
-        RoundedRectangle(cornerRadius: 16, style: .continuous)
-            .fill(lightTeal)
+        RoundedRectangle(cornerRadius: LightAppTheme.Sizes.cornerRadiusMedium, style: .continuous)
+            .fill(LightAppTheme.Colors.primaryLight)
             .frame(height: 124)
             .overlay {
                 Image(systemName: "shield.fill")
-                    .font(.system(size: 36, weight: .bold))
-                    .foregroundStyle(tealColor)
+                    .font(.system(size: LightAppTheme.Sizes.iconLarge, weight: .bold))
+                    .foregroundStyle(LightAppTheme.Colors.primary)
             }
     }
 
@@ -64,8 +59,8 @@ struct LoginView: View {
         HStack {
             Spacer()
             Button("Forgot Password?") {}
-                .font(.system(size: 16, weight: .semibold))
-                .foregroundStyle(tealColor)
+                .font(LightAppTheme.Fonts.buttonSmall)
+                .foregroundStyle(LightAppTheme.Colors.primary)
         }
     }
 
@@ -76,22 +71,22 @@ struct LoginView: View {
                 if viewModel.isLoading {
                     ProgressView()
                         .progressViewStyle(.circular)
-                        .tint(darkColor)
+                        .tint(LightAppTheme.Colors.primaryDark)
                 } else {
                     Text("Sign In")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(LightAppTheme.Fonts.buttonLarge)
                     Image(systemName: "arrow.right")
                         .font(.system(size: 16, weight: .semibold))
                 }
                 Spacer()
             }
-            .foregroundStyle(darkColor)
-            .frame(height: 56)
+            .foregroundStyle(LightAppTheme.Colors.primaryDark)
+            .frame(height: LightAppTheme.Sizes.buttonHeightMedium)
             .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(tealColor)
+                RoundedRectangle(cornerRadius: LightAppTheme.Sizes.cornerRadiusMedium, style: .continuous)
+                    .fill(LightAppTheme.Colors.primary)
             )
-            .shadow(color: tealColor.opacity(0.35), radius: 10, x: 0, y: 6)
+            .withPrimaryShadow()
         }
         .disabled(viewModel.isLoading)
     }
@@ -114,15 +109,15 @@ struct LoginView: View {
     private var dividerSection: some View {
         HStack(spacing: 10) {
             Rectangle()
-                .fill(Color(red: 0.88, green: 0.90, blue: 0.93))
+                .fill(LightAppTheme.Colors.borderLight)
                 .frame(height: 1)
 
             Text("OR CONTINUE WITH")
-                .font(.system(size: 12, weight: .regular))
-                .foregroundStyle(Color.gray)
+                .font(LightAppTheme.Fonts.captionSmall)
+                .foregroundStyle(LightAppTheme.Colors.textSecondary)
 
             Rectangle()
-                .fill(Color(red: 0.88, green: 0.90, blue: 0.93))
+                .fill(LightAppTheme.Colors.borderLight)
                 .frame(height: 1)
         }
         .padding(.top, 2)
@@ -135,12 +130,12 @@ struct LoginView: View {
     private var footer: some View {
         HStack(spacing: 6) {
             Text("Don't have an account?")
-                .font(.system(size: 16, weight: .regular))
-                .foregroundStyle(Color.gray)
+                .font(LightAppTheme.Fonts.bodyMedium)
+                .foregroundStyle(LightAppTheme.Colors.textSecondary)
 
             Button("Create Account") {}
-                .font(.system(size: 16, weight: .semibold))
-                .foregroundStyle(tealColor)
+                .font(LightAppTheme.Fonts.buttonMedium)
+                .foregroundStyle(LightAppTheme.Colors.primary)
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }

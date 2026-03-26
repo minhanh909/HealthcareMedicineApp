@@ -3,95 +3,81 @@ import SwiftUI
 struct Welcome3View: View {
     var onLoginTapped: (() -> Void)?
     var onCreateAccountTapped: (() -> Void)?
-    
-    private let tealColor = Color(red: 0.13, green: 0.85, blue: 0.77)
-    private let darkColor = Color(red: 0.02, green: 0.12, blue: 0.22)
-    private let lightTeal = Color(red: 0.72, green: 0.91, blue: 0.88)
-    
+
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: LightAppTheme.Spacing.spacingLarge) {
             // Header
             HStack {
                 Text("MediGuard")
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundStyle(darkColor)
+                    .font(LightAppTheme.Fonts.titleSmall)
+                    .foregroundStyle(LightAppTheme.Colors.textPrimary)
                 Spacer()
             }
-            .padding(.horizontal, 24)
-            .padding(.top, 16)
+            .padding(.horizontal, LightAppTheme.Spacing.spacingXL)
+            .padding(.top, LightAppTheme.Spacing.spacingMedium)
             
             Spacer()
             
             // Illustration - Shield
             VStack {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(lightTeal)
+                    RoundedRectangle(cornerRadius: LightAppTheme.Sizes.cornerRadiusLarge, style: .continuous)
+                        .fill(LightAppTheme.Colors.primaryLight)
                         .frame(height: 180)
                     
                     Image(systemName: "shield.fill")
                         .font(.system(size: 80, weight: .bold))
-                        .foregroundStyle(tealColor)
+                        .foregroundStyle(LightAppTheme.Colors.primary)
                 }
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, LightAppTheme.Spacing.spacingXL)
             .frame(height: 200)
             
             Spacer()
             
             // Content
-            VStack(spacing: 16) {
+            VStack(spacing: LightAppTheme.Spacing.spacingMedium) {
                 Text("Get Started")
-                    .font(.system(size: 28, weight: .bold))
-                    .foregroundStyle(darkColor)
+                    .font(LightAppTheme.Fonts.titleLarge)
+                    .foregroundStyle(LightAppTheme.Colors.textPrimary)
                     .frame(maxWidth: .infinity, alignment: .center)
                 
                 Text("Join thousands of users taking control of their medication safety today")
-                    .font(.system(size: 16, weight: .regular))
-                    .foregroundStyle(Color.gray)
+                    .font(LightAppTheme.Fonts.bodyMedium)
+                    .foregroundStyle(LightAppTheme.Colors.textSecondary)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .lineLimit(3)
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, LightAppTheme.Spacing.spacingXL)
             
             Spacer()
             
             // Buttons
-            VStack(spacing: 12) {
+            VStack(spacing: LightAppTheme.Spacing.spacingSmall) {
                 Button(action: {
                     onCreateAccountTapped?()
                 }) {
-                    HStack(spacing: 8) {
+                    HStack(spacing: LightAppTheme.Spacing.spacingXS) {
                         Image(systemName: "plus.circle.fill")
-                            .font(.system(size: 18, weight: .semibold))
+                            .font(.system(size: LightAppTheme.Sizes.iconSmall, weight: .semibold))
                         Text("Create Account")
-                            .font(.system(size: 16, weight: .semibold))
+                            .font(LightAppTheme.Fonts.buttonMedium)
                     }
-                    .foregroundStyle(darkColor)
                     .frame(maxWidth: .infinity)
-                    .frame(height: 56)
-                    .background(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .fill(tealColor)
-                    )
+                    .primaryButtonStyle()
                 }
                 
                 Button(action: {
                     onLoginTapped?()
                 }) {
                     Text("Login")
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundStyle(tealColor)
+                        .font(LightAppTheme.Fonts.buttonMedium)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 56)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .stroke(tealColor, lineWidth: 2)
-                        )
+                        .secondaryButtonStyle()
                 }
             }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 24)
+            .padding(.horizontal, LightAppTheme.Spacing.spacingXL)
+            .padding(.bottom, LightAppTheme.Spacing.spacingXL)
         }
     }
 }
@@ -99,3 +85,4 @@ struct Welcome3View: View {
 #Preview {
     Welcome3View()
 }
+

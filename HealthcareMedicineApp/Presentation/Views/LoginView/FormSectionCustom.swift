@@ -10,65 +10,63 @@ import SwiftUI
 struct FormSectionCustom: View {
     @Binding var viewModel: LoginViewModel
     
-    private let darkColor = Color(red: 0.02, green: 0.12, blue: 0.22)
-    
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: LightAppTheme.Spacing.spacingMedium) {
+            VStack(alignment: .leading, spacing: LightAppTheme.Spacing.spacingXS) {
                 Text("Email Address")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundStyle(darkColor)
+                    .font(LightAppTheme.Fonts.headingSmall)
+                    .foregroundStyle(LightAppTheme.Colors.textPrimary)
 
-                HStack(spacing: 12) {
+                HStack(spacing: LightAppTheme.Spacing.spacingSmall) {
                     Image(systemName: "envelope.fill")
                         .font(.system(size: 16))
-                        .foregroundStyle(Color.gray)
+                        .foregroundStyle(LightAppTheme.Colors.textSecondary)
 
                     TextField("name@example.com", text: $viewModel.email)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
-                        .font(.system(size: 16, weight: .regular))
+                        .font(LightAppTheme.Fonts.bodyMedium)
                 }
-                .padding(.horizontal, 14)
-                .frame(height: 56)
+                .padding(.horizontal, LightAppTheme.Spacing.spacingSmall)
+                .frame(height: LightAppTheme.Sizes.inputFieldHeight)
                 .background(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .fill(Color.white.opacity(0.72))
+                    RoundedRectangle(cornerRadius: LightAppTheme.Sizes.cornerRadiusMedium, style: .continuous)
+                        .fill(LightAppTheme.Colors.cardBackground)
                 )
                 .overlay {
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .stroke(Color(red: 0.86, green: 0.88, blue: 0.91), lineWidth: 1)
+                    RoundedRectangle(cornerRadius: LightAppTheme.Sizes.cornerRadiusMedium, style: .continuous)
+                        .stroke(LightAppTheme.Colors.border, lineWidth: 1)
                 }
             }
 
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: LightAppTheme.Spacing.spacingXS) {
                 Text("Password")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundStyle(darkColor)
+                    .font(LightAppTheme.Fonts.headingSmall)
+                    .foregroundStyle(LightAppTheme.Colors.textPrimary)
 
-                HStack(spacing: 12) {
+                HStack(spacing: LightAppTheme.Spacing.spacingSmall) {
                     Image(systemName: "lock.fill")
                         .font(.system(size: 16))
-                        .foregroundStyle(Color.gray)
+                        .foregroundStyle(LightAppTheme.Colors.textSecondary)
 
                     SecureField("Enter your password", text: $viewModel.password)
-                        .font(.system(size: 16, weight: .regular))
+                        .font(LightAppTheme.Fonts.bodyMedium)
 
                     Spacer()
 
                     Image(systemName: "eye")
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundStyle(Color.gray)
+                        .foregroundStyle(LightAppTheme.Colors.textSecondary)
                 }
-                .padding(.horizontal, 14)
-                .frame(height: 56)
+                .padding(.horizontal, LightAppTheme.Spacing.spacingSmall)
+                .frame(height: LightAppTheme.Sizes.inputFieldHeight)
                 .background(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .fill(Color.white.opacity(0.72))
+                    RoundedRectangle(cornerRadius: LightAppTheme.Sizes.cornerRadiusMedium, style: .continuous)
+                        .fill(LightAppTheme.Colors.cardBackground)
                 )
                 .overlay {
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .stroke(Color(red: 0.86, green: 0.88, blue: 0.91), lineWidth: 1)
+                    RoundedRectangle(cornerRadius: LightAppTheme.Sizes.cornerRadiusMedium, style: .continuous)
+                        .stroke(LightAppTheme.Colors.border, lineWidth: 1)
                 }
             }
         }

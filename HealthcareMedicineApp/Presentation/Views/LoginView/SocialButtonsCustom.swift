@@ -10,16 +10,13 @@ import SwiftUI
 struct SocialButtonsCustom: View {
     @Bindable var viewModel: LoginViewModel
     
-    private let tealColor = Color(red: 0.13, green: 0.85, blue: 0.77)
-    private let darkColor = Color(red: 0.02, green: 0.12, blue: 0.22)
-    
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: LightAppTheme.Spacing.spacingSmall) {
             socialButton(
                 title: "Continue with Google",
-                textColor: darkColor,
+                textColor: LightAppTheme.Colors.textPrimary,
                 background: .white,
-                borderColor: Color(red: 0.86, green: 0.88, blue: 0.91),
+                borderColor: LightAppTheme.Colors.border,
                 showBorder: true,
                 action: viewModel.signInWithGoogleTapped,
                 icon: {
@@ -29,7 +26,7 @@ struct SocialButtonsCustom: View {
                         .frame(width: 24, height: 24)
                         .overlay {
                             Circle()
-                                .stroke(Color(red: 0.88, green: 0.90, blue: 0.93), lineWidth: 1)
+                                .stroke(LightAppTheme.Colors.borderLight, lineWidth: 1)
                         }
                 }
             )
@@ -37,7 +34,7 @@ struct SocialButtonsCustom: View {
             socialButton(
                 title: "Continue with Apple",
                 textColor: .white,
-                background: darkColor,
+                background: LightAppTheme.Colors.primaryDark,
                 borderColor: .clear,
                 showBorder: false,
                 action: viewModel.signInWithAppleTapped,
@@ -49,7 +46,6 @@ struct SocialButtonsCustom: View {
                 }
             )
         }
-        
     }
     
     @ViewBuilder
@@ -63,24 +59,24 @@ struct SocialButtonsCustom: View {
         @ViewBuilder icon: () -> Icon
     ) -> some View {
         Button(action: action) {
-            HStack(spacing: 12) {
+            HStack(spacing: LightAppTheme.Spacing.spacingSmall) {
                 icon()
                 
                 Text(title)
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(LightAppTheme.Fonts.buttonMedium)
                 
                 Spacer()
             }
             .foregroundStyle(textColor)
-            .padding(.horizontal, 18)
-            .frame(height: 56)
+            .padding(.horizontal, LightAppTheme.Spacing.spacingSmall)
+            .frame(height: LightAppTheme.Sizes.buttonHeightMedium)
             .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                RoundedRectangle(cornerRadius: LightAppTheme.Sizes.cornerRadiusMedium, style: .continuous)
                     .fill(background)
             )
             .overlay {
                 if showBorder {
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    RoundedRectangle(cornerRadius: LightAppTheme.Sizes.cornerRadiusMedium, style: .continuous)
                         .stroke(borderColor, lineWidth: 1)
                 }
             }

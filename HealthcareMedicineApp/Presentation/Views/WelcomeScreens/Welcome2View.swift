@@ -4,113 +4,97 @@ struct Welcome2View: View {
     @State private var selectedDate = Date()
     var onBackTapped: (() -> Void)?
     var onNextTapped: (() -> Void)?
-    
-    private let tealColor = Color(red: 0.13, green: 0.85, blue: 0.77)
-    private let darkColor = Color(red: 0.02, green: 0.12, blue: 0.22)
-    private let lightTeal = Color(red: 0.72, green: 0.91, blue: 0.88)
-    
+
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: LightAppTheme.Spacing.spacingLarge) {
             // Header
             HStack {
                 Text("MediGuard")
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundStyle(darkColor)
+                    .font(LightAppTheme.Fonts.titleSmall)
+                    .foregroundStyle(LightAppTheme.Colors.textPrimary)
                 Spacer()
             }
-            .padding(.horizontal, 24)
-            .padding(.top, 16)
+            .padding(.horizontal, LightAppTheme.Spacing.spacingXL)
+            .padding(.top, LightAppTheme.Spacing.spacingMedium)
             
             Spacer()
             
             // Illustration - Calendar/Date
             VStack {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(lightTeal)
+                    RoundedRectangle(cornerRadius: LightAppTheme.Sizes.cornerRadiusLarge, style: .continuous)
+                        .fill(LightAppTheme.Colors.primaryLight)
                         .frame(height: 180)
                     
-                    VStack(spacing: 12) {
+                    VStack(spacing: LightAppTheme.Spacing.spacingSmall) {
                         HStack {
                             Text("2")
                                 .font(.system(size: 32, weight: .bold))
-                                .foregroundStyle(tealColor)
+                                .foregroundStyle(LightAppTheme.Colors.primary)
                             Spacer()
                             Image(systemName: "calendar")
-                                .font(.system(size: 24, weight: .semibold))
-                                .foregroundStyle(tealColor)
+                                .font(.system(size: LightAppTheme.Sizes.iconMedium, weight: .semibold))
+                                .foregroundStyle(LightAppTheme.Colors.primary)
                         }
                         
                         HStack {
                             Text("Days remaining")
-                                .font(.system(size: 14, weight: .regular))
-                                .foregroundStyle(Color.gray)
+                                .font(LightAppTheme.Fonts.captionLarge)
+                                .foregroundStyle(LightAppTheme.Colors.textSecondary)
                             Spacer()
                         }
                         
                         Spacer()
                     }
-                    .padding(20)
+                    .padding(LightAppTheme.Spacing.spacingXL)
                 }
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, LightAppTheme.Spacing.spacingXL)
             .frame(height: 200)
             
             Spacer()
             
             // Content
-            VStack(spacing: 16) {
+            VStack(spacing: LightAppTheme.Spacing.spacingMedium) {
                 Text("Track Expiry Dates")
-                    .font(.system(size: 28, weight: .bold))
-                    .foregroundStyle(darkColor)
+                    .font(LightAppTheme.Fonts.titleLarge)
+                    .foregroundStyle(LightAppTheme.Colors.textPrimary)
                     .frame(maxWidth: .infinity, alignment: .center)
                 
                 Text("Never miss medicine expiry dates with timely notifications before they expire")
-                    .font(.system(size: 16, weight: .regular))
-                    .foregroundStyle(Color.gray)
+                    .font(LightAppTheme.Fonts.bodyMedium)
+                    .foregroundStyle(LightAppTheme.Colors.textSecondary)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .lineLimit(3)
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, LightAppTheme.Spacing.spacingXL)
             
             Spacer()
             
             // Navigation buttons
-            HStack(spacing: 16) {
+            HStack(spacing: LightAppTheme.Spacing.spacingMedium) {
                 Button(action: {
                     onBackTapped?()
                 }) {
                     Text("Back")
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundStyle(tealColor)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 56)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .stroke(tealColor, lineWidth: 2)
-                        )
+                        .secondaryButtonStyle()
                 }
                 
                 Button(action: {
                     onNextTapped?()
                 }) {
-                    HStack(spacing: 8) {
+                    HStack(spacing: LightAppTheme.Spacing.spacingXS) {
                         Text("Next")
-                            .font(.system(size: 16, weight: .semibold))
+                            .font(LightAppTheme.Fonts.buttonLarge)
                         Image(systemName: "arrow.right")
                             .font(.system(size: 14, weight: .semibold))
                     }
-                    .foregroundStyle(darkColor)
                     .frame(maxWidth: .infinity)
-                    .frame(height: 56)
-                    .background(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .fill(tealColor)
-                    )
+                    .primaryButtonStyle()
                 }
             }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 24)
+            .padding(.horizontal, LightAppTheme.Spacing.spacingXL)
+            .padding(.bottom, LightAppTheme.Spacing.spacingXL)
         }
     }
 }

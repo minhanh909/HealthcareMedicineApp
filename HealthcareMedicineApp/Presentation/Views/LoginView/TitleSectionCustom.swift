@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct TitleSectionCustom: View {
-    private let darkColor = Color(red: 0.02, green: 0.12, blue: 0.22)
-    
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: LightAppTheme.Spacing.spacingXS) {
             Text("Welcome Back")
-                .font(.system(size: 28, weight: .bold))
-                .foregroundStyle(darkColor)
+                .font(LightAppTheme.Fonts.titleLarge)
+                .foregroundStyle(LightAppTheme.Colors.textPrimary)
 
             Text("Securely access your health records\nand provider communications.")
-                .font(.system(size: 16, weight: .regular))
-                .foregroundStyle(Color.gray)
+                .font(LightAppTheme.Fonts.bodyMedium)
+                .foregroundStyle(LightAppTheme.Colors.textSecondary)
                 .lineSpacing(2)
         }
     }

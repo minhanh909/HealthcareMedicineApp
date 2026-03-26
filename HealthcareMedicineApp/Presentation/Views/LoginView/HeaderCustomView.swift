@@ -9,17 +9,14 @@ import SwiftUI
 struct HeaderCustomView: View {
     var onBackTapped: (() -> Void)?
     
-    private let tealColor = Color(red: 0.13, green: 0.85, blue: 0.77)
-    private let darkColor = Color(red: 0.02, green: 0.12, blue: 0.22)
-    
     var body: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: LightAppTheme.Spacing.spacingMedium) {
             Button(action: {
                 onBackTapped?()
             }) {
                 Image(systemName: "chevron.left")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundStyle(darkColor)
+                    .font(.system(size: LightAppTheme.Sizes.iconSmall, weight: .semibold))
+                    .foregroundStyle(LightAppTheme.Colors.textPrimary)
             }
             
             Spacer()
@@ -32,13 +29,10 @@ struct HeaderCustomView: View {
 }
 
 struct ContentHeaderCustomView: View {
-    private let tealColor = Color(red: 0.13, green: 0.85, blue: 0.77)
-    private let darkColor = Color(red: 0.02, green: 0.12, blue: 0.22)
-    
     var body: some View {
-        HStack(spacing: 8) {
-            RoundedRectangle(cornerRadius: 8)
-                .fill(tealColor)
+        HStack(spacing: LightAppTheme.Spacing.spacingSmall) {
+            RoundedRectangle(cornerRadius: LightAppTheme.Sizes.cornerRadiusSmall)
+                .fill(LightAppTheme.Colors.primary)
                 .frame(width: 24, height: 24)
                 .overlay {
                     Image(systemName: "shield.fill")
@@ -47,8 +41,8 @@ struct ContentHeaderCustomView: View {
                 }
             
             Text("MediGuard")
-                .font(.system(size: 20, weight: .bold))
-                .foregroundStyle(darkColor)
+                .font(LightAppTheme.Fonts.titleSmall)
+                .foregroundStyle(LightAppTheme.Colors.textPrimary)
         }
     }
 }
