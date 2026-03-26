@@ -9,14 +9,17 @@ import SwiftUI
 struct HeaderCustomView: View {
     var onBackTapped: (() -> Void)?
     
+    private let tealColor = Color(red: 0.13, green: 0.85, blue: 0.77)
+    private let darkColor = Color(red: 0.02, green: 0.12, blue: 0.22)
+    
     var body: some View {
         HStack(spacing: 16) {
             Button(action: {
                 onBackTapped?()
             }) {
                 Image(systemName: "chevron.left")
-                    .font(.system(size: 18, weight: .semibold))
-                    .foregroundStyle(Color(red: 0.11, green: 0.15, blue: 0.24))
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(darkColor)
             }
             
             Spacer()
@@ -29,20 +32,23 @@ struct HeaderCustomView: View {
 }
 
 struct ContentHeaderCustomView: View {
+    private let tealColor = Color(red: 0.13, green: 0.85, blue: 0.77)
+    private let darkColor = Color(red: 0.02, green: 0.12, blue: 0.22)
+    
     var body: some View {
         HStack(spacing: 8) {
             RoundedRectangle(cornerRadius: 8)
-                .fill(Color(red: 0.13, green: 0.85, blue: 0.77))
+                .fill(tealColor)
                 .frame(width: 24, height: 24)
                 .overlay {
                     Image(systemName: "shield.fill")
                         .font(.system(size: 12, weight: .bold))
-                        .foregroundStyle(Color(red: 0.05, green: 0.18, blue: 0.28))
+                        .foregroundStyle(Color.white)
                 }
             
             Text("MediGuard")
-                .font(.system(size: 24, weight: .bold, design: .rounded))
-                .foregroundStyle(Color(red: 0.12, green: 0.16, blue: 0.25))
+                .font(.system(size: 20, weight: .bold))
+                .foregroundStyle(darkColor)
         }
     }
 }
